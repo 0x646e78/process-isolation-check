@@ -42,3 +42,5 @@ Contributing
 Run tests with [shellcheck](https://github.com/koalaman/shellcheck):
 
     make test
+
+Then open a PR
