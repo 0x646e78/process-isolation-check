@@ -1,4 +1,4 @@
-# linux-isolation-check
+# Linux Process Isolation Check
 
 Checks various aspects relating to isolation of a running process.
 
