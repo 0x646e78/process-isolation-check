@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 if [[ $# -ne 1 ]] ; then
   echo 'Specify the PID as argument'
@@ -19,22 +19,16 @@ printf "ACTIVE LSM MODULES:\t%s" "$active_lsm"
 
 if [ -x "$(command -v getenforce)" ]; then
   selinux=$(getenforce)
-  if [[ "$selinux" == "Disabled" ]]; then
-    printf "\nSELINUX:\t\tDISABLED"
-  elif [[ "$selinux" == "Permissive" ]]; then
-    printf "\nSELINUX:\t\tPERMISSIVE"
-  elif [[ "$selinux" == "Enforced" ]]; then
-    printf "\nSELINUX:\t\tENFORCED"
-  fi
+  printf "\nSELINUX:\t\t%s" "$selinux"
 else
-  printf "\nSELinux:\t\tNOT PRESENT"
+  printf "\nSELinux:\t\tNot Present"
 fi
 
 if [ -x "$(command -v aa-status)" ]; then
   apparmor=$(aa-status)
-  echo "$apparmor"
+  printf "\nAppArmor:\t\t%s" "$apparmor"
 else
-  printf "\nAppArmor:\t\tNOT PRESENT"
+  printf "\nAppArmor:\t\tNot Present"
 fi
 
 echo
@@ -50,13 +44,13 @@ printf "\nPROCESS GID:\t\t%s" "$group"
 seccomp=$(grep Seccomp /proc/"$pid"/status | cut -f2)
 case $seccomp in
   0)
-    printf "\nSECCOMP:\t\tDISABLED"
+    printf "\nSECCOMP:\t\tDisabled"
     ;;
   1)
-    printf "\nSECCOMP:\t\tSTRICT"
+    printf "\nSECCOMP:\t\tStrict"
     ;;
   2)
-    printf "\nSECCOMP:\t\tFILTER"
+    printf "\nSECCOMP:\t\tFilter"
     ;;
 esac
 
