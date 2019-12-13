@@ -1,0 +1,29 @@
+@startuml
+
+scale 1 
+
+skinparam ranksep 20
+skinparam dpi 150
+skinparam arrowThickness 0.7
+skinparam packageTitleAlignment left
+skinparam usecaseBorderThickness 0.4
+skinparam defaultFontSize 12
+skinparam rectangleBorderThickness 1
+skinparam linetype ortho
+skinparam componentStyle uml2
+
+
+#LightGreen :Setup attack;
+-[#orange]-> 
+#LightGreen :Invoke system call;
+-[#orange]-> 
+#White:Audit point;
+-[#orange]-> 
+
+if (SECCOMP Blocked?) then
+  -[#blue]-> Yes;
+  #Lightblue:Safe;
+  -[#blue]->
+  #White:Audit point;
+  -[#blue]->
+  stop

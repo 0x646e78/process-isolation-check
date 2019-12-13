@@ -12,7 +12,9 @@ done
 cat 3_footer >> $tmp
 
 cd ../
-tac $tmp | sed 's/^.*(/:/;s/) then/;/' |tac > model
-plantuml model
+tac $tmp | sed '0,/^.*(/s/^.*(/:/;0,/) then/s/) then/;/' |tac > model
+
+docker run --rm -v $(pwd):/opt/plantuml/src/ ectoplasm/plantuml:latest model
+
 rm model
 rm $tmp

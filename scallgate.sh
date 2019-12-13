@@ -51,7 +51,7 @@ seccomp=$(grep Seccomp /proc/"$pid"/status | cut -f2)
 case $seccomp in
   0)
     printf "\nSECCOMP:\t\tDisabled"
-    level=0
+    level=1
     ;;
   1)
     printf "\nSECCOMP:\t\tStrict"
