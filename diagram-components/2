@@ -1,0 +1,56 @@
+  else
+    -[#orange]-> No;
+    #LightGreen :Invoke function;
+    -[#orange]->
+    if (Function is vulnerable?) then
+      -[#red]-> Yes;
+      #Pink: Compromise Kernel;
+      -[#red]->
+      #Pink: Audit trail loss;
+      -[#red]->
+      stop
+    else
+      -[#orange]->
+      #LightGreen :Access Resource;
+      -[#orange]->
+      if (Resource is hidden?) then
+        -[#blue]-> Yes;
+        #LightBlue: Safe;
+        -[#blue]->
+        #White:Audit point;
+        -[#blue]->
+        stop
+
+      else
+        -[#orange]-> No;
+        if (Has Capability?) then
+          -[#red]-> Yes;
+          #Pink: Compromise Resource;
+          -[#red]->
+          #White:Audit point;
+          -[#red]->;
+          stop
+
+        else
+          -[#orange]-> No;
+          if (Ownership setup correctly?) then
+            -[#blue]-> Yes;
+            #Lightblue: Safe;
+            -[#blue]->
+            #White:Audit point;
+            -[#blue]->
+            stop
+
+          else
+            -[#red]-> No;
+            #Pink: Compromise Resource;
+            -[#red]->
+            #White:Audit point;
+            -[#red]->
+            stop
+          endif
+        endif
+      endif
+    endif
+  endif
+endif

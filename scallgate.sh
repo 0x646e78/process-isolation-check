@@ -51,9 +51,11 @@ seccomp=$(grep Seccomp /proc/"$pid"/status | cut -f2)
 case $seccomp in
   0)
     printf "\nSECCOMP:\t\tDisabled"
+    level=0
     ;;
   1)
     printf "\nSECCOMP:\t\tStrict"
+    level=1
     ;;
   2)
     printf "\nSECCOMP:\t\tFilter"
@@ -69,3 +71,5 @@ echo
 
 capabilities=$(getpcaps "$pid")
 echo "$capabilities"
+
+./generate_uml.sh $level

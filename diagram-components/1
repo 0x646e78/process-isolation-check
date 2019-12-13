@@ -1,0 +1,9 @@
+else
+  -[#orange]-> No;
+  if (LSM Blocked?) then
+    -[#blue]-> Yes;
+    #Lightblue:Safe;
+    -[#blue]->
+    #White:Audit point;
+    -[#blue]->
+    stop
