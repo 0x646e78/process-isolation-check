@@ -1,4 +1,7 @@
 @startuml
+
+scale 1 
+
 skinparam ranksep 20
 skinparam dpi 150
 skinparam arrowThickness 0.7
