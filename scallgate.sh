@@ -35,8 +35,14 @@ echo
 echo
 echo "=== PROCESS ${pid} ==="
 
+if [[ "$(readlink /proc/92019/root)" == "/" ]]; then
+  printf "CHROOT:\t\t\tNo"
+else
+  printf "CHROOT:\t\t\tYes"
+fi
+
 user=$(stat -c "%u" /proc/"$pid"/)
-printf "PROCESS UID:\t\t%s" "$user"
+printf "\nPROCESS UID:\t\t%s" "$user"
 
 group=$(stat -c "%g" /proc/"$pid"/)
 printf "\nPROCESS GID:\t\t%s" "$group"
@@ -63,3 +69,4 @@ echo
 
 capabilities=$(getpcaps "$pid")
 echo "$capabilities"
+
