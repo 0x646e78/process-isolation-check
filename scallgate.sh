@@ -69,4 +69,3 @@ echo
 
 capabilities=$(getpcaps "$pid")
 echo "$capabilities"
-
