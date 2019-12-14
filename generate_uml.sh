@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+function echo_exit {
+  echo $1
+  exit 1
+}
+
+$(which docker 2&>1 /dev/null) || echo_exit "No image generated. Needs docker for image generation."
+
 last_step=$1
 
 tmp=$(mktemp)
