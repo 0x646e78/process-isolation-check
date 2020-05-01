@@ -1,8 +1,6 @@
-# Linux Process Isolation Check
+# pick - Process Isolation ChecK
 
-Checks various aspects relating to isolation of a running process.
-
-Named after the concept of a 'Syscall Gate'.
+Checks various aspects relating to isolation of a running process on a Linux system.
 
 Inspired by https://michielkalkman.com/posts/isolation-modeling-001/
 
@@ -13,17 +11,17 @@ Run as root, or sudo.
 
 With a PID:
 
-    ./scallgate.sh 92017
+    ./pick.sh 92017
 
 or pgrep for a process
 
-    ./scallgate.sh $(pgrep dockerd)
+    ./pick.sh $(pgrep dockerd)
 
 Example
 ---
 
 ```
-$ ./scallgate.sh $(pgrep dockerd)
+$ ./pick.sh $(pgrep dockerd)
 === SYSTEM ===
 ACTIVE LSM MODULES:     capability,yama,selinux
 SELINUX:                Disabled
